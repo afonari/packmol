@@ -17,6 +17,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
+        compiler: ['make', 'cmake']
 
     steps:
     - uses: actions/checkout@v3
@@ -26,11 +27,16 @@ jobs:
         compiler: gcc
         version: 11
 
-    - name: Compile
+    - name: Compile using make
+      if: ${{ matrix.compiler }} == 'make'
       run: |
-        pwd
-        ls
         make
+      shell: bash
+
+    - name: Compile using cmake
+      if: ${{ matrix.compiler }} == 'cmake'
+      run: |
+        cmake && cmake --build ./
       shell: bash
 
     - name: Run
