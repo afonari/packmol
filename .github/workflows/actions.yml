@@ -28,15 +28,15 @@ jobs:
         version: 11
 
     - name: Compile using make
-      if: ${{ matrix.compiler }} == 'make'
+      if: matrix.compiler == 'make'
       run: |
         make
       shell: bash
 
     - name: Compile using cmake
-      if: ${{ matrix.compiler }} == 'cmake'
+      if: matrix.compiler == 'cmake'
       run: |
-        cmake && cmake --build ./
+        cmake ./ && cmake --build ./
       shell: bash
 
     - name: Run
