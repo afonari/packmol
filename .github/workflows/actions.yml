@@ -42,6 +42,6 @@ jobs:
     - name: Run
       run: |
           cd example
-          ./packmol < water_box.inp
+          ../packmol < water_box.inp
           cd ..
       shell: bash
