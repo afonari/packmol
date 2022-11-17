@@ -16,7 +16,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+      # windows-latest is disabled due to cmake failure:
+      # https://github.com/awvwgk/setup-fortran/issues/6
+        os: [ubuntu-latest, macos-latest]
         compiler: ['make', 'cmake']
 
     steps:
