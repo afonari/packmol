@@ -18,7 +18,7 @@ jobs:
       matrix:
       # windows-latest is disabled due to cmake failure:
       # https://github.com/awvwgk/setup-fortran/issues/6
-        os: [ubuntu-latest, macos-latest]
+        os: [windows-latest] #[ubuntu-latest, macos-latest]
         compiler: ['make', 'cmake']
 
     steps:
@@ -38,7 +38,9 @@ jobs:
     - name: Compile using cmake
       if: matrix.compiler == 'cmake'
       run: |
-        cmake ./ && cmake --build ./
+        FC_PATH=$(which $FC)
+        cmake ./ -DCMAKE_Fortran_COMPILER=$FC_PATH
+        cmake --build ./
       shell: bash
 
     - name: Run
