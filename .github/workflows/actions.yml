@@ -25,5 +25,12 @@ jobs:
         compiler: gcc
         version: 11
 
-    - run: echo $FC
+    - name: Compile
+      run: |
+        make
+      shell: bash
+
+    - name: Run
+      run: |
+          ./packmol < test
       shell: bash
