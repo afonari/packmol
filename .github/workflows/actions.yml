@@ -13,8 +13,5 @@ jobs:
         compiler: gcc
         version: 11
 
-      - run: echo $FC
+    - run: echo $FC
       shell: bash
-        
-#      env:
-  #        FC: ${{ steps.setup-fortran.outputs.fc }}
